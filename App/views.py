@@ -12,6 +12,23 @@ def index(request):
     })
 
 
+def dashboard(request):
+    """Renders the home page."""
+    assert isinstance(request, HttpRequest)
+    return render(request, 'dashboard.html', {
+        'title': 'Dashboard Page',
+        'year': datetime.now().year,
+    })
+
+def signUp(request):
+    """Renders the home page."""
+    assert isinstance(request, HttpRequest)
+    return render(request, 'signUp.html', {
+        'title': 'Sign Up Page',
+        'year': datetime.now().year,
+    })
+
+
 # def contact(request):
 #     """Renders the contact page."""
 #     assert isinstance(request, HttpRequest)

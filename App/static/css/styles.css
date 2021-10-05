@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Josefin+Sans&display=swap');
+@import url('animation.css');
+
+:root {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  border: none;
+}
+
+html,
+body {
+  font-family: var(--bs-body-font-family);
+  font-family: 'Josefin Sans',
+    sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  color: black;
+  justify-content: center;
+  /* background-position: center center; */
+  /* background-attachment: fixed; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #d6d6d6;
+}
+
+section {
+  padding: 10vh 3vw 3vh;
+  align-items: center;
+  min-height: 100vh;
+}
+
+section:nth-child(1),
+.section1 {
+  background-color: yellowgreen;
+  background-image: url("../assets/img/bg-masthead.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+nav {
+  transition: all ease 0.4s;
+}
+
+nav div ul li {
+  border: none;
+}
+
+nav div ul li a {
+  font-size: calc(7px + 0.4vw);
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #5b5a58;
+  letter-spacing: 2px;
+  margin: 0.2vh 0.3vw !important;
+  padding: 0.6vh 0.6vw !important;
+  border-radius: 10px;
+  transition: all ease 0.2s !important;
+}
+
+nav div ul li a.active {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+    rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: all ease 0.4s !important;
+}
+
+nav div ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+  transition: all ease 0.4s !important;
+
+}
+
+footer {
+  background-color: #5b5a58;
+  padding: 20px 0;
+}
+
+/* id */
+#nav-ul {
+  display: contents;
+  height: 20px;
+}
+
+/* class */
+.font-cursive {
+  font-family: 'Bonheur Royale',
+    cursive;
+}
+
+.profile-pic {
+  border-radius: 50%;
+  height: calc(130px + 2vw);
+  width: calc(130px + 2vw);
+  max-width: 200px;
+  max-height: 200px;
+  margin: 2vh;
+}
+
+.profile-name {
+  font-size: calc(12px + .4vw);
+}
+
+.header-h1 {
+  font-size: calc(34px + 2vw);
+  font-weight: bold;
+}
+
+.header-p {
+  font-size: calc(18px + 0.6vw);
+}
+
+.blur-bg {
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: background-color ease 0.4s;
+}
+
+.add-shadow {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.1) 0px 4px 6px -2px;
+}
+
+.blank-effect {
+  animation: blank 1s ease-in-out infinite;
+}
