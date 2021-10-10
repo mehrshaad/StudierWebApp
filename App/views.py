@@ -1,11 +1,54 @@
 from django.shortcuts import render
 from django.http import HttpRequest
 from datetime import datetime
+from .models import Newuser
+from django.shortcuts import redirect
+
+
+def checkSignUp(name, email, password):
+    try:
+        Newuser.objects.get(email=str(email))
+        return False
+    except:
+        return True
+
+
+def checkLogin(email, pas):    
+    try:
+        old = Newuser.objects.get(email=str(email))
+        # print(old.password,str(pas))
+        if old.password == str(pas):
+            return True
+        return False
+    except:
+        return False
+    return False
 
 
 def index(request):
-    """Renders the home page."""
-    assert isinstance(request, HttpRequest)
+    # assert isinstance(request, HttpRequest)
+    if request.method == 'POST':
+        if checkSignUp(request.POST.get('fullname'),
+                       request.POST.get('email'),
+                       request.POST.get('password')):  # sign up
+            post = Newuser()
+            post.fullname = request.POST.get('fullname')
+            post.email = request.POST.get('email')
+            post.password = request.POST.get('password')
+            post.save()
+            response = redirect('/signUp')
+            return response
+        elif checkLogin(request.POST.get('email'),
+                        request.POST.get('password')):  #sign in
+
+            response = redirect('/dashboard')
+            return response
+    else:
+        return home(request)
+    return home(request)
+
+
+def home(request):
     return render(request, 'index.html', {
         'title': 'Home Page',
         'year': datetime.now().year,
@@ -20,6 +63,7 @@ def dashboard(request):
         'year': datetime.now().year,
     })
 
+
 def signUp(request):
     """Renders the home page."""
     assert isinstance(request, HttpRequest)
@@ -27,24 +71,3 @@ def signUp(request):
         'title': 'Sign Up Page',
         'year': datetime.now().year,
     })
-
-
-# def contact(request):
-#     """Renders the contact page."""
-#     assert isinstance(request, HttpRequest)
-#     return render(
-#         request, 'contact.html', {
-#             'title': 'Contact',
-#             'message': 'Your contact page.',
-#             'year': datetime.now().year,
-#         })
-
-# def about(request):
-#     """Renders the about page."""
-#     assert isinstance(request, HttpRequest)
-#     return render(
-#         request, 'about.html', {
-#             'title': 'About',
-#             'message': 'Your application description page.',
-#             'year': datetime.now().year,
-#         })

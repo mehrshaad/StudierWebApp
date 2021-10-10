@@ -1,1 +1,1 @@
-"web: gunicorn PlanningWebApp.wsgi --log-file -" 
+web: gunicorn PlanningWebApp.wsgi --log-file -

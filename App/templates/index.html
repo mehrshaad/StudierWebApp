@@ -50,22 +50,25 @@
                 <div class="col">
                     <div class="login" id="login-form">
                         <div class="form-login sign-up-login">
-                            <form action="#">
+                            <form method="POST">
+                                {% csrf_token %}
                                 <h1 class="login-h1">Create Account</h1>
                                 <div class="social-login">
                                     <a href="#" class="social"><i class="fab fa-github"></i></a>
                                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                                 </div>
+
                                 <p class="login-p">or use your email for registration</p>
-                                <input type="text" placeholder="Name" />
-                                <input type="email" placeholder="Email" />
-                                <input type="password" placeholder="Password" />
+                                <input type="text" placeholder="Full Name" name="fullname" />
+                                <input type="email" placeholder="Email" name="email" />
+                                <input type="password" placeholder="Password" name="password" />
                                 <button class="btn-login">Sign Up</button>
                             </form>
                         </div>
                         <div class="form-login sign-in-login">
-                            <form action="#">
+                            <form action="#" method="POST">
+                                {% csrf_token %}
                                 <h1 class="login-h1">Sign In</h1>
                                 <div class="social-login">
                                     <a href="#" class="social"><i class="fab fa-github"></i></a>
@@ -73,8 +76,8 @@
                                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                                 </div>
                                 <p class="login-p">or use your account</p>
-                                <input type="email" placeholder="Email" />
-                                <input type="password" placeholder="Password" />
+                                <input type="email" placeholder="Email" name="email" />
+                                <input type="password" placeholder="Password" name="password" />
                                 <button class="btn-login">Sign In</button>
                             </form>
                         </div>
@@ -99,7 +102,6 @@
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!-- Services -->
