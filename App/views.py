@@ -22,7 +22,6 @@ def checkLogin(email, pas):
         return False
     except:
         return False
-    return False
 
 
 def index(request):
