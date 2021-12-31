@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Studier/Dashboard</title>
+    <title>{{title}}</title>
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link href='https://pro.fontawesome.com/releases/v5.15.4/css/all.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css' rel='stylesheet'>
@@ -21,28 +21,28 @@
         </div>
         <ul>
             <li>
-                <a href="#">
+                <a href="{% url 'profile' %}">
                     <i class='bx bx-user'></i>
                     <span class="links_name">Profile</span>
                 </a>
                 <span class="tooltip">Profile</span>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'chart' %}">
                     <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="links_name">Analytics</span>
+                    <span class="links_name">Study Chart</span>
                 </a>
-                <span class="tooltip">Analytics</span>
+                <span class="tooltip">Study Chart</span>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'pom' %}">
                     <i class="fas fa-stopwatch"></i>
                     <span class="links_name">Pomodoro</span>
                 </a>
                 <span class="tooltip">Pomodoro</span>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'store' %}">
                     <i class='bx bxs-store'></i>
                     <span class="links_name">Store</span>
                 </a>
@@ -52,8 +52,8 @@
                 <div class="profile-details">
                     <!-- <img src="profile.jpg" alt="profileImg"> -->
                     <div>
-                        <div class="username">Mehrshad Dadashzadeh</div>
-                        <div class="coin">Coins: 2500<i class='bx bxl-bitcoin'></i></div>
+                        <div class="username">{{ username }}</div>
+                        <div class="coin">Coins: {{coin}}<i class='bx bxl-bitcoin'></i></div>
                     </div>
                 </div>
                 <i class='bx bx-log-out' id="log_out"></i>

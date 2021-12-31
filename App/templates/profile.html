@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://pro.fontawesome.com/releases/v5.15.4/css/all.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/profile.min.css" rel="stylesheet">
+    <link href="../static/css/rangeBar.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <section class="cover"></section>
+    <div id="header">
+        <div class="container-lg">
+            <div class="row">
+                <div class="col">
+                    <div class="profile">
+                        <img src="../static/assets/avatar/{{avatar}}.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="profile">
+                    <p>{{ fullname }}</p>
+                </div>
+            </div>
+            <div class="col-6">
+                <button class="button button-exit pos-fixed">Log Out <b><i class='bx bx-log-out' id="log_out"></i></b>
+                </button>
+            </div>
+        </div>
+    </div>
+    <section id='main'>
+        <div class="container-lg">
+            <div class="row">
+                <div class="col-5">
+                    <div class="cards blue">
+                        <h1>Firstname</h1>
+                        <p>{{ firstname }}</p>
+                    </div>
+                </div>
+                <div class="col-7">
+                    <div class="cards">
+                        <h1>Lastname</h1>
+                        <p>{{ lastname }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="cards">
+                        <h1>Email</h1>
+                        <p>{{ email }}</p>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="cards blue">
+                        <h1>Username</h1>
+                        <p>{{ username }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="cards blue">
+                        <h1>Age</h1>
+                        <p>{{ age }}</p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="cards">
+                        <h1>Coin</h1>
+                        <p>{{ coin }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- <div class="col-3">
+                    <div class="cards">
+                        <h1>123</h1>
+                        <p>123</p>
+                    </div>
+                </div> -->
+                <div class="col-12">
+                    <div class="cards">
+                        <h1>Active Courses</h1>
+                        {% for i in course%}
+                        <p>{{i}}</p>
+                        {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- script -->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/scroll.js"></script>
+    <script src="../static/js/todayDate.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://pro.fontawesome.com/releases/v5.15.4/css/all.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css' rel='stylesheet'>
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../static/css/sidebar.css" rel="stylesheet">
+    <link href="../static/css/store.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="popup" role="alert">
+        <button type="button" data-dismiss="alert" onclick="hide('.popup')">
+            <i class="fas fa-times-circle"></i>
+        </button>
+        <p>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="avatar">
+        <div class="container">
+            <div class="row py-4 align-items-center justify-content-center row-cols-auto">
+                <p class="col-xl text-center align-self-center mx-2 mt-3">
+                    Choose one of the avatars below
+                </p>
+            </div>
+            <div class="row pb-4 align-items-center justify-content-center row-cols-auto">
+                {% for avatar in avatarsCount%}
+                <div class="col-3 text-center align-self-center mx-auto my-3">
+                    <img src="../static/assets/avatar/{{avatar}}.png" alt="Avatar {{avatar}}"
+                        onclick="changeAvatar({{avatar}},true)">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="sidebar">
+        <div class="logo-details">
+            <i class='bx bxl-slack icon'></i>
+            <div class="logo_name">Studier</div>
+            <i class='bx' id="btn"></i>
+        </div>
+        <ul>
+            <li>
+                <a href="{% url 'profile' %}">
+                    <i class='bx bx-user'></i>
+                    <span class="links_name">Profile</span>
+                </a>
+                <span class="tooltip">Profile</span>
+            </li>
+            <li>
+                <a href="{% url 'chart' %}">
+                    <i class='bx bx-pie-chart-alt-2'></i>
+                    <span class="links_name">Study Chart</span>
+                </a>
+                <span class="tooltip">Study Chart</span>
+            </li>
+            <li>
+                <a href="{% url 'pom' %}">
+                    <i class="fas fa-stopwatch"></i>
+                    <span class="links_name">Pomodoro</span>
+                </a>
+                <span class="tooltip">Pomodoro</span>
+            </li>
+            <li>
+                <a href="{% url 'store' %}">
+                    <i class='bx bxs-store'></i>
+                    <span class="links_name">Store</span>
+                </a>
+                <span class="tooltip">Store</span>
+            </li>
+            <li class="profile">
+                <div class="profile-details">
+                    <!-- <img src="profile.jpg" alt="profileImg"> -->
+                    <div>
+                        <div class="username">{{firstname }} {{lastname}}</div>
+                        <div class="coin">Coins: {{coin}}<i class='bx bxl-bitcoin'></i></div>
+                    </div>
+                </div>
+                <i class='bx bx-log-out' id="log_out"></i>
+            </li>
+        </ul>
+    </div>
+    <section id="dashboard">
+        <div class="container-fluid">
+            <div class="row py-2 align-items-center justify-content-center row-cols-auto">
+                <div class="col-md text-center align-self-center mx-2 my-3">
+                    <div class="cards bg" id="double">
+                        <h1>Double Coin</h1>
+                        <p>You can earn double coin for your study time!</p>
+                        {% for i in messages %}
+                        <p>{{ i }}</p>
+                        {%endfor%}
+                        {% if doubleCoin %}
+                        <p>Remaining Time: {{ doubleCoinTime }}</p>
+                        {% else %}
+                        <button onclick="doubleCoin(100)">Active for 2 Days - 100$</button>
+                        <button onclick="doubleCoin(500)">Active for 2 Weeks - 500$</button>
+                        <button onclick="doubleCoin(800)">Active for 1 Month - 800$</button>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md text-center align-self-center mx-2 my-3">
+                    <div class="cards bg" id="avatar" onclick="changeAvatar(0,false)">
+                        <h1>Avatar</h1>
+                        <p>This is a paragraph</p>
+                    </div>
+                </div>
+                <div class="col-md text-center align-self-center mx-2 my-3">
+                    <div class="cards bg" id="username" onclick="showUsername()">
+                        <h1>Edit Username</h1>
+                        <p>You can spend 1000 coins to edit your username</p>
+                        <input type="text" style="display:none" class="usernameInput" id="newUsername"
+                            placeholder="new username">
+                        <button onclick="changeUsername()" style='display:none' class="usernameInput">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-2 align-items-center justify-content-center row-cols-auto">
+                <div class="col-md text-center align-self-center mx-2 my-3 ">
+                    <div class="cards bg" id="dark" onclick="checkDarkmode()">
+                        <h1>Dark mode</h1>
+                        <p>You can buy and active dark mode</p>
+                        <button>switch here</button>
+                    </div>
+                </div>
+                <div class="col-md text-center align-self-center mx-2 my-3">
+                    <div class="cards bg" id="ml">
+                        <h1>Machine learning</h1>
+                        <p>This is a paragraph</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row py-2 align-items-center justify-content-center row-cols-auto">
+                <div class="col-md text-center align-self-center mx-2 my-3 ">
+                    <div class="cards" style="height: auto;">
+                        <h1>Transaction</h1>
+                        <div class="text-center align-items-center">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <div class="container-fluid">
+                                <div class="row align-items-center justify-content-center row-cols-auto">
+                                    <div class="col-md text-center align-self-center">
+                                        <div class="card-trans">
+                                            <h1>50 coin</h1>
+                                            <p>This is a paragraph</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md text-center align-self-center">
+                                        <div class="card-trans">
+                                            <h1>100 coin</h1>
+                                            <p>This is a paragraph</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md text-center align-self-center">
+                                        <div class="card-trans">
+                                            <h1>150 coin</h1>
+                                            <p>This is a paragraph</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var CSRF_TOKEN = '{{ csrf_token }}';
+        var COIN = '{{ coin }}';
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../static/js/sidebar.js"></script>
+    <script src="../static/js/store.js"></script>
+</body>
+
+</html>

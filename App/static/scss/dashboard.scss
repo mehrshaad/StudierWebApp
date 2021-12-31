@@ -1,59 +1,59 @@
 :root {
-    /* background */
-    --bg-log: #1d1b31;
-    --bg-sidebar: #11101d;
-    --bg-tooltip: rgb(255, 255, 255);
-    --bg-text-hover: rgb(255, 255, 255);
-    --bg-cards: #FFFFFD;
-    /* color */
-    --color-icon: rgb(255, 255, 255);
-    --color-text: rgb(255, 255, 255);
-    --color-text-log: rgb(255, 255, 255);
-    --color-icon-text-hover: #11101D;
-    /* height */
-    --height-log: 80px;
-    /* width */
-    --width-sidebar: 78px;
-    --width-sidebar-open: 250px;
-    /* transition */
-    --transition-time: 0.5s;
-    --transition-time-cards: 0.4s;
+  /* background */
+  --bg-log: #1d1b31;
+  --bg-sidebar: #11101d;
+  --bg-tooltip: rgb(255, 255, 255);
+  --bg-text-hover: rgb(255, 255, 255);
+  --bg-cards: #fffffd;
+  /* color */
+  --color-icon: rgb(255, 255, 255);
+  --color-text: rgb(255, 255, 255);
+  --color-text-log: rgb(255, 255, 255);
+  --color-icon-text-hover: #11101d;
+  /* height */
+  --height-log: 80px;
+  /* width */
+  --width-sidebar: 78px;
+  --width-sidebar-open: 250px;
+  /* transition */
+  --transition-time: 0.5s;
+  --transition-time-cards: 0.4s;
 }
 
 section {
-    position: relative;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    min-height: 100vh;
-    top: 0;
-    left: var(--width-sidebar);
-    width: calc(100% - var(--width-sidebar));
-    transition: all var(--transition-time) ease;
-    z-index: 2;
+  position: relative;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  top: 0;
+  left: var(--width-sidebar);
+  width: calc(100% - var(--width-sidebar));
+  transition: all var(--transition-time) ease;
+  z-index: 2;
 }
 
 .cards {
-    padding: 15px 10px;
-    background-color: var(--bg-cards);
-    border-radius: 10px;
-    height: 250px;
-    min-width: 300px;
-    overflow: auto;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 15px 10px;
+  background-color: var(--bg-cards);
+  border-radius: 10px;
+  height: 250px;
+  min-width: 300px;
+  overflow: auto;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: all ease-out var(--transition-time-cards);
+
+  &:hover {
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
     transition: all ease-out var(--transition-time-cards);
+  }
 
-    &:hover {
-        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-        transition: all ease-out var(--transition-time-cards);
-    }
+  h1 {
+    font-weight: bold;
+    font-size: 18px;
+  }
 
-    h1 {
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    p {
-        font-size: 16px;
-    }
+  p {
+    font-size: 16px;
+  }
 }

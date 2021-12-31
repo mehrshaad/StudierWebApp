@@ -1,23 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Josefin+Sans&display=swap');
 @import url('animation.css');
 @import url('dashboard.min.css');
-
-::-webkit-scrollbar {
-    width: 15px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.2);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgb(0, 0, 0, 0.5);
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
+@import url('scrollbar.css');
 
 * {
     padding: 0;
@@ -30,8 +14,10 @@ body {
         sans-serif;
     margin: 0;
     min-height: 100vh;
+    width: 100%;
     color: black;
     justify-content: center;
+    overflow: auto;
     background-repeat: no-repeat;
     background-size: cover;
     background-color: #F8F7FB;
@@ -43,6 +29,7 @@ body {
     overflow-x: hidden;
     left: 0;
     top: 0;
+    margin: 0;
     width: var(--width-sidebar);
     height: calc(100% - var(--height-log));
     background: var(--bg-sidebar);
@@ -192,8 +179,9 @@ body {
     height: var(--height-log);
     width: var(--width-sidebar);
     left: 0;
-    bottom: -8px;
+    bottom: 0px;
     padding: 10px 14px;
+    margin: 0;
     background: #1d1b31;
     transition: all var(--transition-time) ease-in-out;
     overflow: hidden;
@@ -259,10 +247,20 @@ body {
 #sidebar.open~#dashboard {
     left: var(--width-sidebar-open);
     width: calc(100% - var(--width-sidebar-open));
+    transition: all var(--transition-time) ease-in-out;
 }
 
 @media (max-width:768px) {
+    :root {
+        --width-sidebar-open: 100%;
+    }
+
     [class*='col'] {
         width: 100%;
+    }
+
+    #sidebar.open~#dashboard {
+        left: var(--width-sidebar);
+        transition: all var(--transition-time) ease-in-out;
     }
 }
