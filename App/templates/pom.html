@@ -1,72 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{title}}</title>
+    <link
+      crossorigin="anonymous"
+      rel="stylesheet"
+      href="../static/css/pom.css"
+    />
+    <link
+      crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Audiowide"
+    />
+    <script
+      crossorigin="anonymous"
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+    <script
+      crossorigin="anonymous"
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"
+    ></script>
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"
+      rel="stylesheet"
+    />
+    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+    <link href="../static/css/sidebar.css" rel="stylesheet" />
+    <script
+      crossorigin="anonymous"
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    ></script>
+    <link
+      crossorigin="anonymous"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>{{title}}</title>
-  <link crossorigin="anonymous" rel="stylesheet" href="../static/css/pom.css" />
-  <link crossorigin="anonymous" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
-  <link crossorigin="anonymous" rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script crossorigin="anonymous" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script crossorigin="anonymous" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js">
-  </script>
-  <script crossorigin="anonymous" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <link crossorigin="anonymous" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-
-</head>
-
-<body>
-  {% csrf_token %}
-  <div class="container">
-    <div class="row">
-      <div class="col-3 usercourse">
-        Username: {{ username }}
+  <body>
+    <div id="sidebar">
+      <div class="logo-details">
+        <i class="bx bxl-slack icon"></i>
+        <div class="logo_name">Studier</div>
+        <i class="bx" id="btn"></i>
       </div>
-      <div class="col-3 "></div>
-      <div class="col-3"></div>
-      <div class="col-3 usercourse">
-        <label for="course">Choose a Course:</label>
-        <select class="selectpicker" onchange="postSearch()" name="course" id="course">
-          {% for i in course%}
-          <option value={{i}}>{{i}}</option>
-          {%endfor%}
-        </select>
-      </div>
+      <ul>
+        <li>
+          <a href="{% url 'dashboard' %}">
+            <i class="fas fa-home"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+
+        <li>
+          <a href="{% url 'profile' %}">
+            <i class="fas fa-user"></i>
+            <span class="links_name">Profile</span>
+          </a>
+          <span class="tooltip">Profile</span>
+        </li>
+        <li>
+          <a href="{% url 'analysis' %}">
+            <i class="fas fa-chart-pie"></i>
+            <span class="links_name">Analysis</span>
+          </a>
+          <span class="tooltip">Analysis</span>
+        </li>
+        <li>
+          <a href="{% url 'store' %}">
+            <i class="bx bxs-store"></i>
+            <span class="links_name">Store</span>
+          </a>
+          <span class="tooltip">Store</span>
+        </li>
+        <li class="profile">
+          <div class="profile-details">
+            <div>
+              <div class="username">{{username}}</div>
+              <div class="coin">Coins: {{coin}} SC</div>
+            </div>
+          </div>
+          <i class="bx bx-info-circle" id="log_out"></i>
+        </li>
+      </ul>
     </div>
-  </div>
-
-
-  <main class="app">
-    <progress id="js-progress" value="0"></progress>
-    <div class="progress-bar"></div>
-    <div class="timer">
-      <div class="button-group mode-buttons" id="js-mode-buttons">
-        <button data-mode="pomodoro" class="button active mode-button" id="js-pomodoro">
-          Pomodoro
-        </button>
-        <button data-mode="shortBreak" class="button mode-button" id="js-short-break">
-          Short break
-        </button>
-        <button data-mode="longBreak" class="button mode-button" id="js-long-break">
-          Long break
-        </button>
+    {% csrf_token %}
+    <section id="dashboard">
+      <div class="container">
+        <div class="row pt-2">
+          <div class="col usercourse text-center">
+            <label for="course">Choose a Course:</label>
+            <select
+              class="selectpicker"
+              onchange="postSearch()"
+              name="course"
+              id="course"
+            >
+              {% for i in course%}
+              <option value="{{i}}">{{i}}</option>
+              {%endfor%}
+            </select>
+          </div>
+        </div>
       </div>
-      <div class="clock" id="js-clock">
-        <span id="js-minutes">25</span>
-        <span class="separator">:</span>
-        <span id="js-seconds">00</span>
-      </div>
-      <button class="main-button" data-action="start" id="js-btn">
-        Start
-      </button>
-    </div>
-  </main>
+      <main class="app">
+        <div class="timer">
+          <div class="button-group mode-buttons" id="js-mode-buttons">
+            <button
+              data-mode="pomodoro"
+              class="button active mode-button"
+              id="js-pomodoro"
+            >
+              Pomodoro
+            </button>
+            <button
+              data-mode="shortBreak"
+              class="button mode-button"
+              id="js-short-break"
+            >
+              Short break
+            </button>
+            <button
+              data-mode="longBreak"
+              class="button mode-button"
+              id="js-long-break"
+            >
+              Long break
+            </button>
+          </div>
+          <div class="clock" id="js-clock">
+            <span id="js-minutes">25</span>
+            <span class="separator">:</span>
+            <span id="js-seconds">00</span>
+          </div>
+          <button class="main-button" data-action="start" id="js-btn">
+            Start
+          </button>
+        </div>
+      </main>
+    </section>
 
-  <script>var CSRF_TOKEN = '{{ csrf_token }}';</script>
-  <script crossorigin="anonymous" src="../static/js/pom.js"></script>
-</body>
-
+    <script>
+      var CSRF_TOKEN = "{{ csrf_token }}";
+    </script>
+    <script crossorigin="anonymous" src="../static/js/pom.js"></script>
+    <script src="../static/js/sidebar.js"></script>
+  </body>
 </html>

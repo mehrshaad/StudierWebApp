@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+    <link
+      href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      rel="stylesheet"
+    />
+    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+    <link href="../static/css/sidebar.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <style>
+    .cards {
+      overflow: auto;
+    }
+    .cards div {
+      width: auto;
+      height: auto;
+      text-align: center;
+    }
+  </style>
+
+  <body>
+    <div id="sidebar">
+      <div class="logo-details">
+        <i class="bx bxl-slack icon"></i>
+        <div class="logo_name">Studier</div>
+        <i class="bx" id="btn"></i>
+      </div>
+      <ul>
+        <li>
+          <a href="{% url 'dashboard' %}">
+            <i class="fas fa-home"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a href="{% url 'profile' %}">
+            <i class="fas fa-user"></i>
+            <span class="links_name">Profile</span>
+          </a>
+          <span class="tooltip">Profile</span>
+        </li>
+        <li>
+          <a href="{% url 'pom' %}">
+            <i class="fas fa-stopwatch"></i>
+            <span class="links_name">Pomodoro</span>
+          </a>
+          <span class="tooltip">Pomodoro</span>
+        </li>
+        <li>
+          <a href="{% url 'store' %}">
+            <i class="bx bxs-store"></i>
+            <span class="links_name">Store</span>
+          </a>
+          <span class="tooltip">Store</span>
+        </li>
+        <li class="profile">
+          <div class="profile-details">
+            <div>
+              <div class="username">{{username}}</div>
+              <div class="coin">Coins: {{coin}} SC</div>
+            </div>
+          </div>
+          <i class="bx bx-info-circle" id="log_out"></i>
+        </li>
+      </ul>
+    </div>
+    <section id="dashboard">
+      <div class="container-fluid py-2">
+        <div class="row py-2 align-items-center justify-content-center">
+          <div class="col-md-12 align-self-center mx-auto">
+            <div class="cards text-center">
+              <h3>Last 7 Days</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row py-2 align-items-center justify-content-center">
+          <div class="col-md-8 align-self-center mx-auto">
+            <div class="cards text-center">
+              <div id="coursePomToday"></div>
+            </div>
+          </div>
+          <div class="col-md-4 text-center align-self-center mx-auto">
+            <div class="cards">
+              <div id="courseCoinToday"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row py-2 align-items-center justify-content-center">
+          <div class="col-md-12 align-self-center mx-auto">
+            <div class="cards text-center">
+              <h3>Last 30 Days</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row py-2 align-items-center justify-content-center">
+          <div class="col-md-8 text-center align-self-center mx-auto">
+            <div class="cards">
+              <div id="coursePomLastWeek"></div>
+            </div>
+          </div>
+          <div class="col-md-4 text-center align-self-center mx-auto">
+            <div class="cards">
+              <div id="courseCoinLastWeek"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row py-2 align-items-center justify-content-center">
+          <div class="col-md-12 align-self-center mx-auto">
+            <div class="cards text-center">
+              <h3>Last 90 Days</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row py-2 align-items-center justify-content-center">
+          <div class="col-md-8 text-center align-self-center mx-auto">
+            <div class="cards">
+              <div id="coursePomLastMonth"></div>
+            </div>
+          </div>
+          <div class="col-md-4 text-center align-self-center mx-auto">
+            <div class="cards">
+              <div id="courseCoinLastMonth"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript" src="../static/js/sidebar.js"></script>
+    <script type="text/javascript" src="../static/js/analysis.js"></script>
+    <script>
+            var CSRF_TOKEN = "{{ csrf_token }}";
+            var season = {{season|safe}};
+              var week = {{week|safe}};
+              var month= {{month|safe}};
+                        window.onload = function() {
+              barChart('coursePomToday', 'Last 7-Days', week)
+              barChart('coursePomLastWeek', 'Last 30-Days', month)
+              barChart('coursePomLastMonth', 'Last 90-Days', season)
+              pieChart('courseCoinToday', 'Last 7-Days', week)
+              pieChart('courseCoinLastWeek', 'Last 30-Days',month)
+              pieChart('courseCoinLastMonth', 'Last 90-Days', season)
+              // multiBarChart('coursePomLastMonth')
+      };
+    </script>
+  </body>
+</html>

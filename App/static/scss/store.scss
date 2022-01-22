@@ -1,59 +1,108 @@
 :root {
-  --bg-log: #1d1b31;
-  --transition-time-cards: 0.4s;
   --bg-cards2: #444444;
+  --transition-time: 0.4s;
+  --transition-time-cards: 0.4s;
 }
 
-.bg {
-  background-color: var(--bg-cards2);
-  background-position: center;
-  background-size: cover;
-  color: white;
+$cardTransition:0.4s;
+$gradient: linear-gradient(to left bottom, #f2fedc, #f6fce0, #f9fbe5, #fbfaea, #fbf9f0);
+$gradientTrans: linear-gradient(to left bottom, #ebeeff, #fce9fc, #ffe6ec, #ffe8d7, #ffefca);
 
-  // &#double {
-  //   background-image: url("/App/static/assets/img/double.jpg");
-  // }
-
-  // &#avatar {
-  //   background-image: url("../static/assets/img/rezaei.png");
-  // }
-
-  // &#username {
-  //   background-image: url("../static/assets/img/rezaei.png");
-  // }
-
-  // &#dark {
-  //   background-image: url("../static/assets/img/rezaei.png");
-  // }
-
-  // &#ml {
-  //   background-image: url("../static/assets/img/rezaei.png");
-  // }
-}
-
-.card-trans {
-  margin: 10px 50px;
+.cardsStore {
   padding: 15px 10px;
-  background-color: var(--bg-cards2);
+  background-color: #fffffd;
+  background-image: none;
   border-radius: 10px;
-  height: 250px;
-  width: auto;
-  overflow: auto;
+  height: 300px;
+  min-width: 300px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transition: all ease-out var(--transition-time-cards);
-
-  &:hover {
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-    transition: all ease-out var(--transition-time-cards);
-  }
+  transition: all ease-out $cardTransition;
 
   h1 {
+    position: sticky;
     font-weight: bold;
-    font-size: 18px;
+    top: 35%;
+    font-size: 40px;
+    transition: all ease-out $cardTransition $cardTransition;
   }
 
-  p {
-    font-size: 16px;
+  &.actButt {
+    cursor: pointer;
+  }
+
+  &.notSticky {
+    h1 {
+      position: relative;
+    }
+  }
+
+  &.Trans {
+    margin: 10px 50px;
+    background-color: var(--bg-cards2);
+    background-image: $gradientTrans;
+    border-radius: 30px;
+    height: 250px;
+    min-width: 200px;
+    width: auto;
+    overflow-y: auto;
+    transition: all ease-out $cardTransition;
+
+    h1 {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-position: 0% 100%;
+      transition: all ease-out $cardTransition;
+    }
+
+  }
+
+  .stuffCard {
+    transform: scale(0);
+    opacity: 0;
+    transition: all ease-out $cardTransition,
+      transform ease 0.1s $cardTransition;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-image: $gradient;
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    background-color: #f9fbe5;
+    overflow-y: auto;
+    transition: all ease-out $cardTransition;
+
+    h1 {
+      position: relative;
+      top: 0;
+      font-size: 24px;
+      transition: all ease-out $cardTransition;
+    }
+
+    .stuffCard {
+      transform: scale(1);
+      opacity: 1;
+      transition: all ease-out $cardTransition $cardTransition,
+        transform ease 0.1s;
+    }
   }
 }
 
@@ -84,6 +133,7 @@
     background-color: transparent;
     outline: none;
     border: none;
+
 
     span {
       z-index: 101;
@@ -134,25 +184,29 @@ $btn-animation-time:0.3s;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
-  width: 200px;
-  max-width: 200px;
+  width: 70%;
+  max-width: 300px;
   border-radius: 15px;
-  padding: 5px 20px;
-  font-size: 16px;
+  padding: 5px 15px;
+  font-size: 12px;
+  margin: 10px 0;
   border: none;
   outline: none;
+  cursor: pointer;
+  background-color: $bg-btn;
   position: relative;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   color: #000;
   transition: all $btn-animation-time ease-in-out;
-  background-color: $bg-btn;
 
-  &.pos-fixed {
-    // display: none;
-    position: fixed;
+  b {
+    opacity: 0;
+    position: absolute;
+    display: flex;
+    right: 30%;
     top: 50%;
-    right: 25px;
-    transform: translateY(0%);
+    transform: translateY(-50%);
+    transition: all $btn-animation-time ease-in-out;
   }
 
   &:hover {
@@ -167,13 +221,14 @@ $btn-animation-time:0.3s;
     }
   }
 
-  b {
-    opacity: 0;
-    position: absolute;
-    display: flex;
-    right: 30%;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: all $btn-animation-time ease-in-out;
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: scaleX(1);
+      transition: all $btn-animation-time ease-in-out;
+    }
   }
+
 }

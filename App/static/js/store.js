@@ -35,6 +35,7 @@ function changeUsername() {
   })
 };
 function checkDarkmode() {
+
   if (COIN >= 500) {
     $.ajax({
       type: 'POST',

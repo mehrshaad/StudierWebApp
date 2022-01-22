@@ -31,7 +31,7 @@ class User(models.Model):
 class Course(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE)
     # study_goal = models.IntegerField()
-    Total_time = models.IntegerField(default=0)
+    Pom_count = models.IntegerField(default=0)
     Priority = models.PositiveSmallIntegerField()
     Name = models.CharField(max_length=32, primary_key=True, unique=True)
     # Category = models.CharField(max_length=32)
@@ -45,13 +45,13 @@ class Store(models.Model):
     Edit_username = models.BooleanField(default=False, null=True)
     dark_mode = models.BooleanField(default=False)
     ml = models.BooleanField(default=False)
-    avatar = models.CharField(max_length=32, null=True)
+    avatar = models.CharField(max_length=32, null=False, default=0)
 
 
 class Transaction(models.Model):
     user = models.ForeignKey(to=User, on_delete=CASCADE)
     Dot = models.DateField()
-    Tid = models.AutoField(primary_key=True, unique=True)  # test konim
+    Tid = models.AutoField(primary_key=True, unique=True)
     Coin_amount = models.PositiveIntegerField()
     Cash_amount = models.PositiveIntegerField()
 
@@ -60,5 +60,5 @@ class Pom(models.Model):
     course = models.ForeignKey(to=Course, on_delete=CASCADE)
     Pid = models.AutoField(primary_key=True, unique=True)
     Date = models.DateField()
-    Time = models.TimeField()
+    Time = models.IntegerField()
     Rating = models.IntegerField()

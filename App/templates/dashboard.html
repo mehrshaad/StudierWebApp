@@ -1,175 +1,197 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>{{title}}</title>
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link href='https://pro.fontawesome.com/releases/v5.15.4/css/all.css' rel='stylesheet'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css' rel='stylesheet'>
-    <link href="../static/css/bootstrap.css" rel="stylesheet">
-    <link href="../static/css/sidebar.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>{{title}}</title>
+  <link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet" />
+  <link href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
+  <link href="../static/css/bootstrap.css" rel="stylesheet" />
+  <link href="../static/css/sidebar.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
-    <div id="sidebar">
-        <div class="logo-details">
-            <i class='bx bxl-slack icon'></i>
-            <div class="logo_name">Studier</div>
-            <i class='bx' id="btn"></i>
-        </div>
-        <ul>
-            <li>
-                <a href="{% url 'profile' %}">
-                    <i class='bx bx-user'></i>
-                    <span class="links_name">Profile</span>
-                </a>
-                <span class="tooltip">Profile</span>
-            </li>
-            <li>
-                <a href="{% url 'chart' %}">
-                    <i class='bx bx-pie-chart-alt-2'></i>
-                    <span class="links_name">Study Chart</span>
-                </a>
-                <span class="tooltip">Study Chart</span>
-            </li>
-            <li>
-                <a href="{% url 'pom' %}">
-                    <i class="fas fa-stopwatch"></i>
-                    <span class="links_name">Pomodoro</span>
-                </a>
-                <span class="tooltip">Pomodoro</span>
-            </li>
-            <li>
-                <a href="{% url 'store' %}">
-                    <i class='bx bxs-store'></i>
-                    <span class="links_name">Store</span>
-                </a>
-                <span class="tooltip">Store</span>
-            </li>
-            <li class="profile">
-                <div class="profile-details">
-                    <!-- <img src="profile.jpg" alt="profileImg"> -->
-                    <div>
-                        <div class="username">{{ username }}</div>
-                        <div class="coin">Coins: {{coin}}<i class='bx bxl-bitcoin'></i></div>
-                    </div>
-                </div>
-                <i class='bx bx-log-out' id="log_out"></i>
-            </li>
-        </ul>
+  <div id="sidebar">
+    <div class="logo-details">
+      <i class="bx bxl-slack icon"></i>
+      <div class="logo_name">Studier</div>
+      <i class="bx" id="btn"></i>
     </div>
-    <section id="dashboard">
-        <div class="container-fluid">
-            <div class="row py-2 align-items-center justify-content-center row-cols-auto">
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
-                <div class="col-md text-center align-self-center mx-2 my-3">
-                    <div class="cards">
-                        <h1>Title</h1>
-                        <p>This is a paragraph</p>
-                    </div>
-                </div>
+    <ul>
+      <li>
+        <a href="{% url 'profile' %}">
+          <i class="fas fa-user"></i>
+          <span class="links_name">Profile</span>
+        </a>
+        <span class="tooltip">Profile</span>
+      </li>
+      <li>
+        <a href="{% url 'analysis' %}">
+          <i class="fas fa-chart-pie"></i>
+          <span class="links_name">Analysis</span>
+        </a>
+        <span class="tooltip">Analysis</span>
+      </li>
+      <li>
+        <a href="{% url 'pom' %}">
+          <i class="fas fa-stopwatch"></i>
+          <span class="links_name">Pomodoro</span>
+        </a>
+        <span class="tooltip">Pomodoro</span>
+      </li>
+      <li>
+        <a href="{% url 'store' %}">
+          <i class="bx bxs-store"></i>
+          <span class="links_name">Store</span>
+        </a>
+        <span class="tooltip">Store</span>
+      </li>
+      <li class="profile">
+        <div class="profile-details">
+          <div>
+            <div class="username">{{username}}</div>
+            <div class="coin">Coins: {{coin}} SC</div>
+          </div>
+        </div>
+        <i class="bx bx-info-circle" id="log_out"></i>
+      </li>
+    </ul>
+  </div>
+  <section id="dashboard">
+    <div class="container-fluid pt-2">
+      <div class="row py-2 align-items-center justify-content-center">
+        <div class="col-md-5 text-center align-self-center mx-auto">
+          <div class="cards" >
+            <h1 id="time"style="font-size: 1.7rem;"></h1>
+          </div>
+        </div>
+        <div class="col-md-7 text-center align-self-center mx-auto">
+          <div class="cards" >
+            <h1 id="date" style ="font-size: 1.7rem;"></h1>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row py-2 align-items-center justify-content-center row-cols-auto">
+        <div class="col-md text-center align-self-center mx-auto" onclick="window.location.href={% url 'profile' %}">
+          <div class="cards dash actButt">
+            <h1>Profile</h1>
+            <div class="stuffCard">
+              <p>Click here to direct to the Profile page to see your personal information</p> 
+            </div>
+          </div>
+        </div>
+        <div class="col-md text-center align-self-center mx-auto" onclick="window.location.href={% url 'analysis' %}">
+          <div class="cards dash actButt">
+            <h1>Analysis</h1>
+            <div class="stuffCard">
+              <p>Click here to direct to the Analysis page to get a full information about your study progress</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md text-center align-self-center mx-auto" onclick="window.location.href={% url 'pom' %}">
+          <div class="cards dash actButt">
+            <h1>Pomodoro</h1>
+            <div class="stuffCard">
+              <p>Click here to direct to the Pomodoro page which is for calculating your study time with pomodoro method</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md text-center align-self-center mx-auto" onclick="window.location.href={% url 'store' %}">
+          <div class="cards dash actButt">
+            <h1>Store</h1>
+            <div class="stuffCard">
+              <p>Click here to direct to the Store page to buy features like "edit username", "avatar" and more...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row py-2 align-items-center justify-content-center row-cols-auto">
+        <div class="col-md text-center align-self-center mx-auto">
+            <div class="cards text-center">
+              <h1 style="font-size: 1.7rem">Study Time (This Week vs Last Week)</h1>
             </div>
         </div>
-    </section>
-
-    <script src="../static/js/sidebar.js"></script>
+        </div>
+      <div class="row py-2 align-items-center justify-content-center row-cols-auto">
+        <!--
+        <div class="col-md-3 text-center align-self-center mx-auto">
+          <div class="cards">
+            <div class="weather">
+              <ul class="locations" data="tehran"></ul>
+            </div>
+          </div>
+        </div>-->
+        <div class="col-md text-center align-self-center mx-auto">
+          <div class="cards" style="overflow-x: auto;">
+            <div id="chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="../static/js/sidebar.js"></script>
+  <script>
+    var CSRF_TOKEN = "{{ csrf_token }}";
+    var data = {{data|safe}};
+    $(document).ready(function () {
+      $.getScript("../static/js/analysis.js", function () {
+      multiBarChart('chart', 'Comprehense', data);});
+      $.getScript("../static/js/todayDate.js", function () {
+        setTime();
+        setDate();
+      });
+      let list = document.querySelector(".weather .locations"),
+        li = document.createElement("li"),
+        location = document
+        .querySelector(".weather .locations")
+        .getAttribute("data"),
+        apiKey = "2fd55e51956668604fe7f6dc4d602de0",
+        iconSize = 80,
+        url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
+      li.classList.add("location");
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          let {
+            main,
+            name,
+            sys,
+            weather
+          } = data;
+          li.innerHTML = `
+                    <h2 class="location-name" data-name="${name},${
+              sys.country
+            }">
+                        ${name} - ${sys.country}
+                    </h2>
+                    <p class="location-temp">${Math.round(
+                      main.temp
+                    )}<sup>°C</sup></p>
+                    <img src="http://openweathermap.org/img/wn/${
+                      weather[0]["icon"]
+                    }@2x.png" alt="icon" height="${iconSize}"
+                        width="${iconSize}">
+                        <p style='text-transform: uppercase;'>${
+                          weather[0]["description"]
+                        }</p>
+                    `;
+          list.appendChild(li);
+        })
+        .catch(function () {
+          li.innerHTML = `
+                    <h2 class="location-name">
+                        Sorry no city found with the name "${location}" &#128533
+                    </h2>
+                    `;
+          list.appendChild(li);
+        });
+    });
+  </script>
 </body>
 
 </html>

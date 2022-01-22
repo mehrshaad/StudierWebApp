@@ -33,27 +33,96 @@ section {
   z-index: 2;
 }
 
+$cardTransition:0.4s;
+$gradient: linear-gradient(to left bottom, #f2fedc, #f6fce0, #f9fbe5, #fbfaea, #fbf9f0);
+$gradientTrans: linear-gradient(to left bottom, #ebeeff, #fce9fc, #ffe6ec, #ffe8d7, #ffefca);
+
 .cards {
+  position: relative;
   padding: 15px 10px;
-  background-color: var(--bg-cards);
+  background-color: #fffffd;
+  background-image: none;
   border-radius: 10px;
-  height: 250px;
-  min-width: 300px;
-  overflow: auto;
+  min-width: 250px;
+  min-height: 50px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transition: all ease-out var(--transition-time-cards);
+  transition: all ease-out $cardTransition;
+ p {
+        font-size: 20px;
+      }
+  &.dash {
+    height: 200px;
 
-  &:hover {
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-    transition: all ease-out var(--transition-time-cards);
+    h1 {
+      position: sticky;
+      font-weight: bold;
+      top: 35%;
+      font-size: 40px;
+      transition: all ease-out $cardTransition $cardTransition;
+    }
+
+    &.notSticky {
+      h1 {
+        position: relative;
+      }
+    }
+
+    .stuffCard {
+      transform: scale(0);
+      opacity: 0;
+      transition: all ease-out $cardTransition,
+        transform ease 0.1s $cardTransition;
+
+     
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-image: $gradient;
+      box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+      background-color: #f9fbe5;
+      overflow-y: auto;
+      transition: all ease-out $cardTransition;
+
+      h1 {
+        position: relative;
+        top: 0;
+        font-size: 24px;
+        transition: all ease-out $cardTransition;
+      }
+
+      .stuffCard {
+        transform: scale(1);
+        opacity: 1;
+        transition: all ease-out $cardTransition $cardTransition,
+          transform ease 0.1s;
+      }
+    }
   }
+}
 
-  h1 {
+.actButt {
+  cursor: pointer;
+}
+
+.hijri {
+  font-family: sans-serif;
+}
+
+.location {
+  &-temp {
+    font-size: 3rem;
     font-weight: bold;
-    font-size: 18px;
-  }
+    margin: 0;
 
-  p {
-    font-size: 16px;
+    sup {
+      font-size: 0.5em;
+    }
   }
 }
