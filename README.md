@@ -1,5 +1,5 @@
 # Studier Web Application
-Studier is an open source full-stack web application, and it can help you to review and manage your study status! This project was part of our Principles of Database Design which was instructed by <a href="https://www.linkedin.com/in/sadegh-eskandari-3b87797a/" target="_blank">Prof. Sadegh Eskandari</a> at Guilan University.
+Studier is an open source full-stack web application, and it can help you to review and manage your study status! This project was part of our Principles of Database Design course, which was instructed by <a href="https://www.linkedin.com/in/sadegh-eskandari-3b87797a/" target="_blank">Prof. Sadegh Eskandari</a> at Guilan University.
 
 ## How to get started
 You can access the Studier web app using this <a href="https://studier-app.herokuapp.com/" target="_blank">LINK</a>
