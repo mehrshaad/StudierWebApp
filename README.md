@@ -5,7 +5,7 @@ Studier is a full-stack web application, and it can help you to review and manag
 
 ## How to get started
 You can access the Studier web app using this <a href="https://studier-app.herokuapp.com/" target="_blank">LINK</a>
-+ Please note if you're located in Iran you'll have to use a **VPN** in case to access the URL
++ Please note if you're located in Iran you'll have to use a **VPN** to access the URL
 
 In your first visit, you will have to sign up, enter your current course
 names, and then you can have access to the options such as the built-in Pomodoro timer or charts of your study times.
